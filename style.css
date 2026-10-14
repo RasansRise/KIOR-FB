@@ -790,3 +790,145 @@ button{font:inherit;cursor:pointer}
     mask-image: linear-gradient(180deg, #000 0%, #000 86%, transparent 100%);
   }
 }
+
+/* Scroll storytelling presentation only. Original layout and spacing tokens remain unchanged. */
+.story-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  height: 3px;
+  z-index: 1200;
+  pointer-events: none;
+  background: transparent;
+  direction: ltr;
+}
+.story-progress > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
+}
+/* The generated visual remains the same; only its CSS background receives a tiny cinematic scale. */
+@media (min-width: 861px) {
+  .solution { --story-zoom: 1; }
+  .solution::before { transform: scale(var(--story-zoom)); transform-origin: 75% 50%; }
+  .service-card .service-image img,
+  .work-card img { transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+  .service-card:hover .service-image img,
+  .work-card:hover img { transform: scale(1.045); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .story-progress { display: none; }
+  .service-card .service-image img, .work-card img { transition: none; }
+}
+
+/* FIX: full-viewport pinned chapters without changing the established spacing values.
+   The footer is in normal flow and sits on a lower stacking layer. */
+main {position:relative;z-index:2;margin-bottom:0;background:var(--secondary-soft)}
+.footer {position:relative;inset:auto;width:100%;z-index:1}
+.site-header {z-index:1000}
+@media (min-width:861px) and (prefers-reduced-motion:no-preference) {
+  .challenge,.solution,.services,.work,.closing {
+    min-height:100svh;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .challenge>.container,.solution>.container,.services>.container,.work>.container,.closing>.container{
+    flex-shrink:0;
+    width:min(calc(100% - (var(--container-padding-desktop) * 2)),var(--max-width));
+  }
+  /* Each pinned canvas fully covers the viewport; no dark footer can peek through. */
+  .challenge,.services,.closing{background-color:var(--secondary-soft)}
+  .solution{background-color:#000}
+  .work{background-color:var(--primary)}
+}
+
+/* Stacking scroll: next panel rises in front of the previous pinned panel.
+   No changes to locked spacing variables or section padding. */
+@media (min-width:861px) and (prefers-reduced-motion:no-preference) {
+  .challenge, .solution, .services, .work, .closing {
+    isolation:isolate;
+  }
+  .challenge {z-index:10}
+  .solution {z-index:11}
+  .services  {z-index:12}
+  .work     {z-index:13}
+  .closing  {z-index:14}
+  main {overflow:visible}
+  .footer {z-index:1}
+}
+
+
+/* Footer reveal fix: Footer remains in normal document flow at all times.
+   Closing's pinSpacing maintains its scroll runway; after its pin ends,
+   the closing panel moves upwards and naturally reveals the footer. */
+.footer {visibility:visible!important;pointer-events:auto;position:relative}
+
+/* TRUE FOOTER UNDERLAY: the final chapter scrolls off this fixed layer.
+   Reveal space is based on the measured footer height and does not alter
+   any of the project's locked section padding or gap tokens. */
+@media (min-width:861px) and (prefers-reduced-motion:no-preference) {
+  body { isolation:isolate; }
+  main {
+    position:relative;
+    z-index:2;
+    background:var(--secondary-soft);
+    margin-bottom:var(--footer-reveal-height, 460px);
+  }
+  .footer {
+    position:fixed !important;
+    inset:auto 0 0 0 !important;
+    width:100%;
+    z-index:1;
+    visibility:visible !important;
+    pointer-events:auto;
+    max-height:100vh;
+    overflow-y:auto;
+  }
+  .site-header {z-index:1000}
+}
+
+/* Wheel inertia only. No changes to original section spacing or stacked pins. */
+html.has-smooth-scroll { scroll-behavior: auto !important; }
+
+
+/* ONLY Challenge full-canvas background layout.
+   Spacing tokens, other sections, Lenis and ScrollTrigger remain unchanged. */
+@media (min-width: 861px) {
+  .challenge {
+    background-color: var(--secondary-soft);
+    background-image:
+      linear-gradient(to right,
+        rgba(247,239,227,0) 0%,
+        rgba(247,239,227,0) 31%,
+        rgba(247,239,227,.66) 49%,
+        var(--secondary-soft) 66%),
+      url('images/challenge-man.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%, auto 105%;
+    background-position: center center, left center;
+  }
+  .challenge-art {
+    display: none !important;
+  }
+  .challenge > .container.split-grid {
+    position: relative;
+    z-index: 2;
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  }
+  .challenge-copy {
+    grid-column: 2;
+    grid-row: 1;
+    direction: rtl;
+    text-align: right;
+  }
+}
+@media (max-width: 860px) {
+  .challenge {
+    background-image: none;
+  }
+}
