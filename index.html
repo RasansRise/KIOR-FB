@@ -10,8 +10,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <style>/* Prevent first-frame flash before external styles load */ #sitePreloader{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;background:transparent;color:#fff} #sitePreloader .kio-preloader__panel{position:absolute;left:0;right:0;height:50%;background:#f06756} #sitePreloader .kio-preloader__panel--top{top:0} #sitePreloader .kio-preloader__panel--bottom{bottom:0} body.kio-is-loading{overflow:hidden}</style>
 </head>
-<body>
+<body class="kio-is-loading">
+  <!-- Animated brand story: kept separate from every layout section -->
+  <div class="kio-preloader" id="sitePreloader" aria-label="جارٍ تحميل الموقع" role="status">
+    <div class="kio-preloader__panel kio-preloader__panel--top" aria-hidden="true"></div>
+    <div class="kio-preloader__panel kio-preloader__panel--bottom" aria-hidden="true"></div>
+        <div class="kio-preloader__inner">
+      <div class="kio-preloader__brand" dir="ltr">
+        <span class="kio-preloader__name">KIO</span>
+        <span class="kio-preloader__bridge"><i></i></span>
+        <span class="kio-preloader__name">RASAN’S</span>
+      </div>
+    </div>
+  </div>
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
       <a href="#home" class="brand" aria-label="KIO RASAN’S">
