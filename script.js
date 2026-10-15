@@ -31,11 +31,7 @@
       entrance = gsap.timeline({defaults:{ease:'power3.out'}});
       entrance.from('.kio-preloader__name', {
         autoAlpha:0, y:15, duration:.53, stagger:.11
-      }).from('.kio-preloader__eyebrow, .kio-preloader__message', {
-        autoAlpha:0, y:12, duration:.45, stagger:.10
-      }, '-=.22').to('.kio-preloader__bar span', {
-        scaleX:1, duration:.6, ease:'power1.inOut'
-      }, 0);
+      })
     }
     const entranceDone = entrance
       ? new Promise(resolve => entrance.eventCallback('onComplete', resolve))
@@ -76,9 +72,7 @@
         curtain.to('.kio-preloader__name', {
           autoAlpha:0, duration:.26, ease:'power2.out'
         }, 0);
-        curtain.to('.kio-preloader__eyebrow, .kio-preloader__message, .kio-preloader__bar, .kio-preloader__corner', {
-          autoAlpha:0, duration:.25, ease:'power2.out'
-        }, 0);
+        
         curtain.to(bridge, {
           left:0, top:() => (window.innerHeight - rect.height)/2,
           width:() => window.innerWidth, duration:.82, ease:'power3.inOut'

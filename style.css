@@ -1026,3 +1026,78 @@ body.kio-is-loading { overflow:hidden; }
   #sitePreloader .kio-preloader__message {top:calc(50% + 48px);font-size:20px;}
   #sitePreloader .kio-preloader__bar {top:calc(50% + 112px);}
 }
+
+/* ================================================================
+   MID-SIZE DESKTOP FIX — ONLY 861px THROUGH 1200px
+   No changes to desktop (>1200px), mobile (<=860px), animations,
+   or the locked spacing variables.
+   ================================================================ */
+@media (min-width: 861px) and (max-width: 1200px) {
+  html, body { max-width: 100%; overflow-x: clip; }
+  main, .hero, .clients-strip, .challenge, .solution,
+  .services, .work, .closing { width: 100%; max-width: 100%; }
+
+  /* At this range the old generic tablet rule collapses the desktop
+     hero to one column, while later overrides put it back into two.
+     Keep a consistent two-column hero and prevent inner overflow. */
+  .hero .container { width: min(calc(100% - (var(--container-padding-desktop) * 2)), var(--max-width)); }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 43%) minmax(0, 57%);
+    align-items: stretch;
+    min-height: 700px;
+  }
+  .hero-copy {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+    max-width: 100%;
+    padding: 96px 0 122px;
+    justify-self: stretch;
+  }
+  .hero-copy h1 { font-size: clamp(46px, 5.2vw, 66px); }
+  .hero-copy p { font-size: 16px; }
+  .hero-visual {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    min-width: 0;
+    min-height: 700px;
+  }
+  .hero-showreel { width: min(100%, 460px); max-width: 100%; left: 0; }
+  .showreel-thumbs { min-width: 0; }
+
+  /* Preserve the approved full-canvas challenge image and right copy,
+     but give the illustration and the text distinct safe zones. */
+  .challenge > .container.split-grid {
+    width: min(calc(100% - (var(--container-padding-desktop) * 2)), var(--max-width));
+    display: grid;
+    grid-template-columns: minmax(0, 47%) minmax(0, 53%);
+    align-items: center;
+  }
+  .challenge-copy { grid-column: 2; grid-row: 1; min-width: 0; }
+  .challenge-copy h2 { font-size: clamp(34px, 3.65vw, 44px); }
+  .challenge-copy p { font-size: 16px; }
+  .challenge {
+    background-size: 100% 100%, auto 100%;
+    background-position: center, left center;
+  }
+
+  /* Other chapters keep the desktop storytelling arrangement rather
+     than the generic max-1200px single-column layout. */
+  .solution .split-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 46%) minmax(0, 54%);
+    align-items: center;
+  }
+  .solution-copy, .solution-art { min-width: 0; }
+  .solution-copy h2 { font-size: clamp(35px, 4vw, 49px); }
+  .section-intro h2, .work-intro h2, .closing-center h2 {
+    font-size: clamp(38px, 4.3vw, 54px);
+  }
+  .services-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .service-card, .work-card { min-width: 0; }
+  .footer-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+  .footer-col, .footer-brand-col { min-width: 0; }
+}
