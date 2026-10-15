@@ -235,9 +235,20 @@
     };
     addChapter('.challenge', tl => tl
       .from('.challenge-copy .section-meta', { autoAlpha:0, y:15, duration:.42 })
-      .from('.challenge-copy h2', { autoAlpha:0, y:40, duration:.76 }, '-=.18')
-      .from('.challenge-copy p', { autoAlpha:0, y:22, duration:.55 }, '-=.35')
-      .from('.challenge-copy .btn-arrow', { autoAlpha:0, y:14, duration:.5 }, '-=.29'));
+      .from('.challenge-copy h2', { autoAlpha:0, y:36, duration:.72 }, '-=.16')
+      .from('.challenge-cta', { autoAlpha:0, y:16, duration:.46 }, '-=.25')
+      .from('.challenge-circle', { autoAlpha:0, scale:0.22, duration:.65, ease:'back.out(1.2)' }, '+=.04')
+      .from('.challenge-figure', { autoAlpha:0, y:145, duration:.78, ease:'power3.out' }, '+=.05')
+      .from('.challenge-note', {
+        autoAlpha:0,
+        scale:.82,
+        y:() => gsap.utils.random(20, 70),
+        x:() => gsap.utils.random(-22, 22),
+        rotation:() => gsap.utils.random(-18, 18),
+        duration:.44,
+        stagger:{ each:.11, from:'random' },
+        ease:'power2.out'
+      }, '+=.06'));
     addChapter('.solution', tl => tl
       .from('.solution-copy .section-meta', { autoAlpha:0, y:16, duration:.4 })
       .from('.solution-copy h2', { autoAlpha:0, y:40, duration:.78 }, '-=.18')
@@ -347,13 +358,26 @@
   mm.add('(max-width: 860px)', () => {
     // Touch devices: short reveal sequences, no pinned sections, no horizontal animation.
     const groups = [
-      ['.challenge', '.challenge-copy, .challenge-art'],
-      ['.solution', '.solution-copy'],
+            ['.solution', '.solution-copy'],
       ['.services', '.section-intro, .service-card'],
       ['.work', '.work-intro, .work-card'],
       ['.closing', '.closing-center'],
       ['.footer', '.footer-col']
     ];
+    // Challenge needs its own ordered timeline instead of a whole-art fade.
+    const mobileChallenge = gsap.timeline({
+      scrollTrigger: {trigger:'.challenge', start:'top 80%', once:true},
+      defaults: {ease:'power3.out'}
+    });
+    mobileChallenge
+      .from('.challenge-copy', {autoAlpha:0, y:25, duration:.52})
+      .from('.challenge-circle', {autoAlpha:0, scale:.22, duration:.6, ease:'back.out(1.2)'}, '+=.05')
+      .from('.challenge-figure', {autoAlpha:0, y:100, duration:.7}, '+=.04')
+      .from('.challenge-note', {
+        autoAlpha:0, scale:.8, y:35, duration:.4,
+        stagger:{each:.1, from:'random'}, ease:'power2.out'
+      }, '+=.06')
+      .from('.challenge-cta', {autoAlpha:0, y:12, duration:.4}, '-=.08');
     groups.forEach(([chapter, elements]) => {
       gsap.from($$(elements, $(chapter)), {
         autoAlpha: 0, y: 20, stagger: .08, duration: .65,

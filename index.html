@@ -1,279 +1,410 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="description" content="KIO RASAN’S — شريكك في التسويق والنمو لقطاع الأغذية والمشروبات في السعودية." />
-  <title>KIO RASAN’S</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-  <style>/* Prevent first-frame flash before external styles load */ #sitePreloader{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;background:transparent;color:#fff} #sitePreloader .kio-preloader__panel{position:absolute;left:0;right:0;height:50%;background:#f06756} #sitePreloader .kio-preloader__panel--top{top:0} #sitePreloader .kio-preloader__panel--bottom{bottom:0} body.kio-is-loading{overflow:hidden}</style>
-</head>
-<body class="kio-is-loading">
-  <!-- Animated brand story: kept separate from every layout section -->
-  <div class="kio-preloader" id="sitePreloader" aria-label="جارٍ تحميل الموقع" role="status">
-    <div class="kio-preloader__panel kio-preloader__panel--top" aria-hidden="true"></div>
-    <div class="kio-preloader__panel kio-preloader__panel--bottom" aria-hidden="true"></div>
-        <div class="kio-preloader__inner">
-      <div class="kio-preloader__brand" dir="ltr">
-        <span class="kio-preloader__name">KIO</span>
-        <span class="kio-preloader__bridge"><i></i></span>
-        <span class="kio-preloader__name">RASAN’S</span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="KIO RASAN’S — شريكك في التسويق والنمو لقطاع الأغذية والمشروبات في السعودية."
+    />
+    <title>KIO RASAN’S</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Prevent first-frame flash before external styles load */
+      #sitePreloader {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: grid;
+        place-items: center;
+        background: transparent;
+        color: #fff;
+      }
+      #sitePreloader .kio-preloader__panel {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 50%;
+        background: #f06756;
+      }
+      #sitePreloader .kio-preloader__panel--top {
+        top: 0;
+      }
+      #sitePreloader .kio-preloader__panel--bottom {
+        bottom: 0;
+      }
+      body.kio-is-loading {
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body class="kio-is-loading">
+    <!-- Animated brand story: kept separate from every layout section -->
+    <div
+      class="kio-preloader"
+      id="sitePreloader"
+      aria-label="جارٍ تحميل الموقع"
+      role="status"
+    >
+      <div
+        class="kio-preloader__panel kio-preloader__panel--top"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="kio-preloader__panel kio-preloader__panel--bottom"
+        aria-hidden="true"
+      ></div>
+      <div class="kio-preloader__inner">
+        <div class="kio-preloader__brand" dir="ltr">
+          <span class="kio-preloader__name">KIO</span>
+          <span class="kio-preloader__bridge"><i></i></span>
+          <span class="kio-preloader__name">RASAN’S</span>
+        </div>
       </div>
     </div>
-  </div>
-  <header class="site-header" id="siteHeader">
-    <div class="container header-inner">
-      <a href="#home" class="brand" aria-label="KIO RASAN’S">
-        <span>KIO</span>
-        <i></i>
-        <span class="brand-end">RASAN’S</span>
-      </a>
+    <header class="site-header" id="siteHeader">
+      <div class="container header-inner">
+        <a href="#home" class="brand" aria-label="KIO RASAN’S">
+          <span>KIO</span>
+          <i></i>
+          <span class="brand-end">RASAN’S</span>
+        </a>
 
-      <button class="menu-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false">☰</button>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="فتح القائمة"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
 
-      <nav class="nav" aria-label="القائمة الرئيسية">
-        <a href="#home" class="active">الرئيسية</a>
-        <a href="#challenge">من نحن</a>
-        <a href="#services">خدماتنا</a>
-        <a href="#portfolio">أعمالنا</a>
-        <a href="#contact">تواصل معنا</a>
-      </nav>
-    </div>
-  </header>
+        <nav class="nav" aria-label="القائمة الرئيسية">
+          <a href="#home" class="active">الرئيسية</a>
+          <a href="#challenge">من نحن</a>
+          <a href="#services">خدماتنا</a>
+          <a href="#portfolio">أعمالنا</a>
+          <a href="#contact">تواصل معنا</a>
+        </nav>
+      </div>
+    </header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div class="hero-copy reveal">
-          <div class="eyebrow">KIO RASAN’S </div>
-          <h1><span>شريك</span> <span>واحد</span><span>لنمو</span><span>مطعمك.</span></h1>
-          <p>فريق واحد. خطة واحدة. هدف واحد. أن مطعمك يكبر بشكل أسرع وبطريقة مدروسة.</p>
-          <a href="#portfolio" class="btn-arrow">
-            <span>شاهد أعمالنا</span>
-            <span class="circle">←</span>
-          </a>
-        </div>
+    <main>
+      <section class="hero" id="home">
+        <div class="container hero-grid">
+          <div class="hero-copy reveal">
+            <div class="eyebrow">KIO RASAN’S</div>
+            <h1>
+              <span>شريك</span> <span>واحد</span><span>لنمو</span
+              ><span>مطعمك.</span>
+            </h1>
+            <p>
+              فريق واحد. خطة واحدة. هدف واحد. أن مطعمك يكبر بشكل أسرع وبطريقة
+              مدروسة.
+            </p>
+            <a href="#portfolio" class="btn-arrow">
+              <span>شاهد أعمالنا</span>
+              <span class="circle">←</span>
+            </a>
+          </div>
 
-        <div class="hero-visual reveal">
-          <div class="hero-arch"></div>
+          <div class="hero-visual reveal">
+            <div class="hero-arch"></div>
 
-          <div class="hero-showreel">
-            <button class="play-btn" type="button" id="showreelBtn" aria-label="الانتقال إلى أعمالنا">▶</button>
-            <div class="showreel-thumbs">
-              <img src="images/service-content.webp" alt="منتج برجر" />
-              <img src="images/solution-drink.webp" alt="مشروب بارد" />
-              <img src="images/service-packaging.webp" alt="تغليف" />
-              <img src="images/service-consulting.webp" alt="استشارات" />
+            <div class="hero-showreel">
+              <button
+                class="play-btn"
+                type="button"
+                id="showreelBtn"
+                aria-label="الانتقال إلى أعمالنا"
+              >
+                ▶
+              </button>
+              <div class="showreel-thumbs">
+                <img src="images/service-content.webp" alt="منتج برجر" />
+                <img src="images/solution-drink.webp" alt="مشروب بارد" />
+                <img src="images/service-packaging.webp" alt="تغليف" />
+                <img src="images/service-consulting.webp" alt="استشارات" />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="clients-strip" aria-label="العلامات التجارية التي عملنا معها">
-      <div class="container clients-inner">
-        <div class="clients-marquee" aria-label="شريط متحرك لعلامات العملاء">
-          <div class="clients-track" id="clientsTrack">
-            <div class="clients-logos">
-              <span>STMP</span><span>DILEX</span><span>MOON CAFE</span><span>DEERA</span>
-              <span>MKH MAKH</span><span>MOISHI</span><span>DRIP</span>
+      <section
+        class="clients-strip"
+        aria-label="العلامات التجارية التي عملنا معها"
+      >
+        <div class="container clients-inner">
+          <div class="clients-marquee" aria-label="شريط متحرك لعلامات العملاء">
+            <div class="clients-track" id="clientsTrack">
+              <div class="clients-logos">
+                <span>STMP</span><span>DILEX</span><span>MOON CAFE</span
+                ><span>DEERA</span> <span>MKH MAKH</span><span>MOISHI</span
+                ><span>DRIP</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="challenge section-block" id="challenge">
-      <div class="container split-grid">
-        <div class="challenge-art reveal" role="img" aria-label="صاحب مطعم سعودي يفكر في تحديات المبيعات والتسويق">
-          <span class="challenge-note note-sales">المبيعات</span>
-          <span class="challenge-note note-reach">إقبال ضعيف</span>
-          <span class="challenge-note note-competitors">منافسين أقوى</span>
-          <span class="challenge-note note-campaigns">حملات بدون نتيجة</span>
-          <span class="challenge-note note-plan">لا يوجد خطة واضحة</span>
+      <section class="challenge section-block" id="challenge">
+        <div class="container challenge-stack">
+          <div class="challenge-copy reveal centered">
+            <div class="section-meta center"><span>التحدّي</span></div>
+            <h2>
+              إذا عندك مطعم أو كافيه في السعودية
+              <span class="accent">أكيد مرّ عليك واحد من هالتحديات</span>
+            </h2>
+          <div class="challenge-cta reveal centered">
+            <a href="#solution" class="btn-arrow btn-arrow--dark">
+              <span>وهنا يبدأ دورنا</span>
+              <span class="circle circle-outline">←</span>
+            </a>
+          </div>
+          </div>
+
+          <div
+            class="challenge-art reveal"
+            role="img"
+            aria-label="صاحب مطعم سعودي يفكر في تحديات المبيعات والتسويق"
+          >
+            <span class="challenge-circle" aria-hidden="true"></span>
+            <span class="challenge-figure" aria-hidden="true"></span>
+            <span class="challenge-note note-sales">المبيعات</span>
+            <span class="challenge-note note-reach">إقبال ضعيف</span>
+            <span class="challenge-note note-competitors">منافسين أقوى</span>
+            <span class="challenge-note note-campaigns">حملات بدون نتيجة</span>
+            <span class="challenge-note note-plan">لا يوجد خطة واضحة</span>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="solution section-block" id="solution">
+        <div class="container split-grid split-grid--reverse">
+          <div class="solution-art reveal"></div>
+
+          <div class="solution-copy reveal">
+            <div class="section-meta light"><span>الحل</span></div>
+            <h2>
+              أغلب الوكالات تبيع كلام…
+              <span class="accent">حنا نشتغل على أرقام.</span>
+            </h2>
+            <p>
+              في KIO Rasans ما نقيس نجاحنا بعدد التصاميم ولا عدد المنشورات. نقيس
+              نجاحنا بزيادة المبيعات، وزيادة عدد العملاء، وتحسين تجربة العميل.
+            </p>
+            <a href="#services" class="btn-arrow">
+              <span>تعرّف علينا</span>
+              <span class="circle circle-outline coral-outline">←</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="services section-block" id="services">
+        <div class="container">
+          <div class="section-intro centered reveal">
+            <div class="section-meta center"><span>كيف نشتغل؟</span></div>
+            <h2>نختبر. نتعلم.<span class="accent">نتأقلم.</span></h2>
+            <p class="center-text">
+              ما نؤمن بالحلول الجاهزة. كل علامة تجارية لها جمهور مختلف وسلوك
+              مختلف.
+            </p>
+          </div>
+
+          <div class="services-grid">
+            <article class="service-card reveal">
+              <div class="service-image">
+                <img src="images/service-branding.webp" alt="الهوية البصرية" />
+              </div>
+              <div class="service-content"><h3>دراسة السوق والمنافسين</h3></div>
+            </article>
+
+            <article class="service-card reveal">
+              <div class="service-image">
+                <img src="images/service-content.webp" alt="المحتوى والإنتاج" />
+              </div>
+              <div class="service-content"><h3>فهم سلوك العملاء</h3></div>
+            </article>
+
+            <article class="service-card reveal">
+              <div class="service-image">
+                <img
+                  src="images/service-digital.webp"
+                  alt="التسويق الرقمي والحملات"
+                />
+              </div>
+              <div class="service-content"><h3>اختبار أنواع المحتوى</h3></div>
+            </article>
+
+            <article class="service-card reveal">
+              <div class="service-image">
+                <img
+                  src="images/service-packaging.webp"
+                  alt="التغليف والمنيو"
+                />
+              </div>
+              <div class="service-content">
+                <h3>اختبار العروض والرسائل التسويقية</h3>
+              </div>
+            </article>
+
+            <article class="service-card reveal">
+              <div class="service-image">
+                <img
+                  src="images/service-consulting.webp"
+                  alt="الاستشارات والمبيعات"
+                />
+              </div>
+              <div class="service-content">
+                <h3>قياس النتائج بشكل مستمر</h3>
+              </div>
+            </article>
+          </div>
+
+          <div class="centered cta-row reveal">
+            <a href="#contact" class="btn-pill">
+              اكتشف خدماتنا <span class="dot">←</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="work section-block" id="portfolio">
+        <div class="container work-layout">
+          <div class="work-intro reveal">
+            <div class="section-meta light"><span>أعمال مختارة</span></div>
+            <h2>أعمالنا تتكلم عنا</h2>
+            <p>
+              خلال السنوات الماضية عملنا على مشاريع وحملات وتجارب متنوعة داخل
+              قطاع الأغذية والمشروبات.
+            </p>
+            <a href="#contact" class="btn-arrow">
+              <span>عرض جميع الأعمال</span>
+              <span class="circle secondary">←</span>
+            </a>
+          </div>
+
+          <div class="work-grid">
+            <article class="work-card reveal">
+              <img src="images/work-stmp.webp" alt="STMP" />
+              <h3>STMP</h3>
+            </article>
+            <article class="work-card reveal">
+              <img src="images/service-content.webp" alt="DILEX" />
+              <h3>DILEX</h3>
+            </article>
+            <article class="work-card reveal">
+              <img src="images/solution-drink.webp" alt="MOON CAFE" />
+              <h3>MOON CAFE</h3>
+            </article>
+            <article class="work-card reveal">
+              <img src="images/work-deera.webp" alt="DEERA" />
+              <h3>DEERA</h3>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing section-block">
+        <div class="container closing-wrap reveal">
+          <div class="closing-center">
+            <div class="section-meta center">
+              <span>جلسة استشارية مجانية</span>
+            </div>
+            <h2>جلسة استشارية مجانية</h2>
+            <p class="center-text">
+              إذا كنت تبحث عن: زيادة المبيعات، تطوير العلامة التجارية، تحسين
+              تجربة العميل، ورفع أداء التسويق.
+            </p>
+            <p class="center-text">
+              <strong>احجز جلستك الاستشارية المجانية.</strong>
+            </p>
+            <p class="center-text">
+              بنراجع وضع المشروع الحالي، وبنجهز لك تصور عملي مبني على: أهدافك،
+              ميزانيتك، وضع السوق، وفرص النمو المتاحة.
+            </p>
+            <a href="#contact" class="btn-arrow btn-arrow--dark">
+              <span>تواصل معنا</span>
+              <span class="circle">←</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="container footer-grid">
+        <div class="footer-col footer-brand-col">
+          <div class="brand footer-brand">
+            <span>KIO</span><i></i><span class="brand-end">RASAN’S</span>
+          </div>
+          <div class="footer-tag">متخصصون في قطاع الأغذية والمشروبات</div>
+          <p>
+            شريكك في بناء وتطوير علامات المطاعم والكافيهات في السعودية، من
+            الإبداع إلى نمو حقيقي.
+          </p>
         </div>
 
-        <div class="challenge-copy reveal">
-          <div class="section-meta"> <span>التحدّي</span></div>
-          <h2>المشكلة غالبًامو في المنتج… <span class="accent">المشكلة في طريقة تقديمه وتسويقه.</span></h2>
-          <p>نعرف التحديات اللي تواجه أصحاب المطاعم، لأننا نشتغل يوميًا مع القطاع ونعرف تفاصيله.</p>
-          <a href="#solution" class="btn-arrow btn-arrow--dark">
-            <span>وهنا يبدأ دورنا</span>
-            <span class="circle circle-outline">←</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="solution section-block" id="solution">
-      <div class="container split-grid split-grid--reverse">
-        <div class="solution-art reveal">
-
+        <div class="footer-col">
+          <h4>روابط سريعة</h4>
+          <ul>
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#challenge">من نحن</a></li>
+            <li><a href="#services">خدماتنا</a></li>
+            <li><a href="#portfolio">أعمالنا</a></li>
+            <li><a href="#contact">تواصل معنا</a></li>
+          </ul>
         </div>
 
-        <div class="solution-copy reveal">
-          <div class="section-meta light"><span>الحل</span></div>
-          <h2>أغلب الوكالات تبيع كلام… <span class="accent">حنا نشتغل على أرقام.</span></h2>
-          <p>في KIO Rasans ما نقيس نجاحنا بعدد التصاميم ولا عدد المنشورات. نقيس نجاحنا بزيادة المبيعات، وزيادة عدد العملاء، وتحسين تجربة العميل.</p>
-          <a href="#services" class="btn-arrow">
-            <span>تعرّف علينا</span>
-            <span class="circle circle-outline coral-outline">←</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="services section-block" id="services">
-      <div class="container">
-        <div class="section-intro centered reveal">
-          <div class="section-meta center"><span>كيف نشتغل؟</span></div>
-          <h2>نختبر. نتعلم.<span class="accent">نتأقلم.</span></h2>
-          <p class="center-text">ما نؤمن بالحلول الجاهزة. كل علامة تجارية لها جمهور مختلف وسلوك مختلف.</p>
+        <div class="footer-col">
+          <h4>خدماتنا</h4>
+          <ul>
+            <li><a href="#services">الهوية البصرية</a></li>
+            <li><a href="#services">المحتوى والإنتاج</a></li>
+            <li><a href="#services">التسويق الرقمي والحملات</a></li>
+            <li><a href="#services">التغليف والمنيو</a></li>
+            <li><a href="#services">الاستشارات والمبيعات</a></li>
+          </ul>
         </div>
 
-        <div class="services-grid">
-          <article class="service-card reveal">
-            <div class="service-image"><img src="images/service-branding.webp" alt="الهوية البصرية" /></div>
-            <div class="service-content"><h3>دراسة السوق والمنافسين</h3></div>
-          </article>
-
-          <article class="service-card reveal">
-            <div class="service-image"><img src="images/service-content.webp" alt="المحتوى والإنتاج" /></div>
-            <div class="service-content"><h3>فهم سلوك العملاء</h3></div>
-          </article>
-
-          <article class="service-card reveal">
-            <div class="service-image"><img src="images/service-digital.webp" alt="التسويق الرقمي والحملات" /></div>
-            <div class="service-content"><h3>اختبار أنواع المحتوى</h3></div>
-          </article>
-
-          <article class="service-card reveal">
-            <div class="service-image"><img src="images/service-packaging.webp" alt="التغليف والمنيو" /></div>
-            <div class="service-content"><h3>اختبار العروض والرسائل التسويقية</h3></div>
-          </article>
-
-          <article class="service-card reveal">
-            <div class="service-image"><img src="images/service-consulting.webp" alt="الاستشارات والمبيعات" /></div>
-            <div class="service-content"><h3>قياس النتائج بشكل مستمر</h3></div>
-          </article>
-        </div>
-
-        <div class="centered cta-row reveal">
-          <a href="#contact" class="btn-pill"> اكتشف خدماتنا <span class="dot">←</span> </a>
+        <div class="footer-col">
+          <h4>تواصل معنا</h4>
+          <ul>
+            <li>المملكة العربية السعودية</li>
+            <li>
+              <a href="mailto:hello@kio-rasans.com">hello@kio-rasans.com</a>
+            </li>
+            <li>
+              <a href="https://kio-r.com" target="_blank" rel="noopener"
+                >www.kio-r.com</a
+              >
+            </li>
+            <li><a href="tel:+966501234567">+966 50 123 4567</a></li>
+          </ul>
         </div>
       </div>
-    </section>
 
-    <section class="work section-block" id="portfolio">
-      <div class="container work-layout">
-        <div class="work-intro reveal">
-          <div class="section-meta light"><span>أعمال مختارة</span></div>
-          <h2>أعمالنا تتكلم عنا</h2>
-          <p>خلال السنوات الماضية عملنا على مشاريع وحملات وتجارب متنوعة داخل قطاع الأغذية والمشروبات.</p>
-          <a href="#contact" class="btn-arrow">
-            <span>عرض جميع الأعمال</span>
-            <span class="circle secondary">←</span>
-          </a>
-        </div>
-
-        <div class="work-grid">
-          <article class="work-card reveal">
-            <img src="images/work-stmp.webp" alt="STMP" />
-            <h3>STMP</h3>
-            <p>قهوة مختصة</p>
-          </article>
-          <article class="work-card reveal">
-            <img src="images/service-content.webp" alt="DILEX" />
-            <h3>DILEX</h3>
-            <p>علامة برجر</p>
-          </article>
-          <article class="work-card reveal">
-            <img src="images/solution-drink.webp" alt="MOON CAFE" />
-            <h3>MOON CAFE</h3>
-            <p>علامة مقاهٍ</p>
-          </article>
-          <article class="work-card reveal">
-            <img src="images/work-deera.webp" alt="DEERA" />
-            <h3>DEERA</h3>
-            <p>علامة مطاعم</p>
-          </article>
-        </div>
+      <div class="container footer-bottom">
+        <small
+          >© <span id="year"></span> KIO RASAN’S. جميع الحقوق محفوظة.</small
+        >
+        <small>علامات مطاعم تكبر.</small>
       </div>
-    </section>
+    </footer>
 
-    <section class="closing section-block">
-      <div class="container closing-wrap reveal">
-
-        <div class="closing-center">
-          <div class="section-meta center"><span>جلسة استشارية مجانية</span></div>
-          <h2>جلسة استشارية مجانية</h2>
-          <p class="center-text">إذا كنت تبحث عن: زيادة المبيعات، تطوير العلامة التجارية، تحسين تجربة العميل، ورفع أداء التسويق.</p>
-          <p class="center-text"><strong>احجز جلستك الاستشارية المجانية.</strong></p>
-          <p class="center-text">بنراجع وضع المشروع الحالي، وبنجهز لك تصور عملي مبني على: أهدافك، ميزانيتك، وضع السوق، وفرص النمو المتاحة.</p>
-          <a href="#contact" class="btn-arrow btn-arrow--dark">
-            <span>تواصل معنا</span>
-            <span class="circle">←</span>
-          </a>
-        </div>
-
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer" id="contact">
-    <div class="container footer-grid">
-      <div class="footer-col footer-brand-col">
-        <div class="brand footer-brand"><span>KIO</span><i></i><span class="brand-end">RASAN’S</span></div>
-        <div class="footer-tag">متخصصون في قطاع الأغذية والمشروبات</div>
-        <p>شريكك في بناء وتطوير علامات المطاعم والكافيهات في السعودية، من الإبداع إلى نمو حقيقي.</p>
-      </div>
-
-      <div class="footer-col">
-        <h4>روابط سريعة</h4>
-        <ul>
-          <li><a href="#home">الرئيسية</a></li>
-          <li><a href="#challenge">من نحن</a></li>
-          <li><a href="#services">خدماتنا</a></li>
-          <li><a href="#portfolio">أعمالنا</a></li>
-          <li><a href="#contact">تواصل معنا</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>خدماتنا</h4>
-        <ul>
-          <li><a href="#services">الهوية البصرية</a></li>
-          <li><a href="#services">المحتوى والإنتاج</a></li>
-          <li><a href="#services">التسويق الرقمي والحملات</a></li>
-          <li><a href="#services">التغليف والمنيو</a></li>
-          <li><a href="#services">الاستشارات والمبيعات</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>تواصل معنا</h4>
-        <ul>
-          <li>المملكة العربية السعودية</li>
-          <li><a href="mailto:hello@kio-rasans.com">hello@kio-rasans.com</a></li>
-          <li><a href="https://kio-r.com" target="_blank" rel="noopener">www.kio-r.com</a></li>
-          <li><a href="tel:+966501234567">+966 50 123 4567</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="container footer-bottom">
-      <small>© <span id="year"></span> KIO RASAN’S. جميع الحقوق محفوظة.</small>
-      <small>علامات مطاعم تكبر.</small>
-    </div>
-  </footer>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js"></script>
-  <script src="script.js"></script>
-</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
