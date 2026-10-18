@@ -149,7 +149,7 @@ button {
   position: absolute;
   left: 0;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .hero .container {
   width: 100%;
@@ -399,7 +399,7 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  font-size: 12px;
+  font-size: 15px;
   font-family: "Cairo", sans-serif;
   font-weight: 800;
   margin-bottom: 18px;
@@ -1782,7 +1782,7 @@ html.has-smooth-scroll {
   color: #fff;
   font-family: "Cairo", sans-serif;
 }
-.kio-preloader::before {
+/* .kio-preloader::before {
   content: "";
   position: absolute;
   width: min(78vw, 870px);
@@ -1791,7 +1791,7 @@ html.has-smooth-scroll {
   border-radius: 50%;
   transform: translate(38%, -27%);
   pointer-events: none;
-}
+} */
 .kio-preloader__inner {
   position: relative;
   z-index: 1;
@@ -3084,5 +3084,309 @@ main { margin-bottom: 0 !important; }
   .challenge, .problem, .solution, .services, .why-kio,
   .service-showcase, .work, .closing {
     z-index: auto !important;
+  }
+}
+
+
+/* CHALLENGE: compact image cluster, centered on the coral circle.
+   Intentionally scoped: no changes to other sections or spacing variables. */
+#challenge.challenge {
+  overflow: hidden !important;
+  position: relative;
+}
+#challenge.challenge > .challenge-stack {
+  align-items: center !important;
+}
+#challenge.challenge .challenge-art {
+  position: relative !important;
+  display: block !important;
+  width: min(100%, 760px) !important;
+  max-width: 760px !important;
+  height: clamp(375px, 43vw, 555px) !important;
+  min-height: 0 !important;
+  flex: 0 0 auto !important;
+  align-self: center !important;
+  margin-inline: auto !important;
+  margin-top: clamp(22px, 3.5vw, 50px) !important;
+  margin-bottom: -2px !important;
+  overflow: visible !important;
+  inset: auto !important;
+  background: none !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+}
+/* The actual visual is cropped at the SECTION edge, not at the art wrapper. */
+#challenge.challenge .challenge-circle {
+  position: absolute !important;
+  width: 78% !important;
+  max-width: none !important;
+  aspect-ratio: 1 !important;
+  height: auto !important;
+  left: 50% !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: -9% !important;
+  transform: translateX(-50%) !important;
+  border-radius: 50%;
+  z-index: 1 !important;
+}
+#challenge.challenge .challenge-figure {
+  position: absolute !important;
+  width: 64% !important;
+  max-width: none !important;
+  height: 98% !important;
+  min-height: 0 !important;
+  left: 50% !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: -8% !important;
+  transform: translateX(-50%) !important;
+  background: url("images/challenge-man-clean.png") center bottom / contain no-repeat !important;
+  z-index: 2 !important;
+}
+#challenge.challenge .challenge-note {
+  position: absolute !important;
+  z-index: 4 !important;
+  width: clamp(86px, 10.3vw, 126px) !important;
+  max-width: 29% !important;
+  min-height: clamp(52px, 6vw, 78px) !important;
+  padding: 8px !important;
+  font-size: clamp(11px, 1.3vw, 16px) !important;
+  line-height: 1.4 !important;
+  bottom: auto !important;
+  right: auto !important;
+}
+#challenge.challenge .note-sales       {left: 17% !important; top: 10% !important;}
+#challenge.challenge .note-competitors {left: 56% !important; top: 9% !important;}
+#challenge.challenge .note-reach       {left: 2% !important;  top: 42% !important;}
+#challenge.challenge .note-campaigns   {left: 79% !important; top: 41% !important;}
+#challenge.challenge .note-plan        {left: 75% !important; top: 68% !important;}
+@media (max-width: 860px) {
+  #challenge.challenge .challenge-art {
+    width: min(100%, 540px) !important;
+    max-width: 540px !important;
+    height: clamp(335px, 91vw, 495px) !important;
+    margin-top: 24px !important;
+  }
+  #challenge.challenge .challenge-note {
+    width: clamp(70px, 17vw, 96px) !important;
+    max-width: 28% !important;
+    min-height: 47px !important;
+    font-size: clamp(10px, 2.3vw, 13px) !important;
+    padding: 6px !important;
+  }
+  #challenge.challenge .note-sales       {left: 14% !important; top: 11% !important;}
+  #challenge.challenge .note-competitors {left: 57% !important; top: 10% !important;}
+  #challenge.challenge .note-reach       {left: 1% !important; top: 43% !important;}
+  #challenge.challenge .note-campaigns   {left: 76% !important; top: 43% !important;}
+  #challenge.challenge .note-plan        {left: 73% !important; top: 69% !important;}
+}
+@media (max-width: 420px) {
+  #challenge.challenge .challenge-art {
+    width: 100% !important;
+    height: clamp(315px, 98vw, 385px) !important;
+  }
+  #challenge.challenge .challenge-note {
+    width: clamp(62px, 20vw, 76px) !important;
+    min-height: 43px !important;
+    font-size: 10px !important;
+  }
+  #challenge.challenge .note-campaigns {left: 77% !important;}
+  #challenge.challenge .note-plan {left: 74% !important;}
+}
+
+/* === Challenge precise layout: final scoped override === */
+#challenge.challenge {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  min-height: 0 !important;
+  height: auto !important;
+  padding-top: clamp(76px, 7vw, 108px) !important;
+  padding-bottom: 0 !important;
+  overflow: hidden !important;
+  background: var(--secondary-soft) !important;
+}
+#challenge.challenge > .container.challenge-stack {
+  width: min(calc(100% - var(--container-padding-desktop) * 2), var(--max-width)) !important;
+  max-width: var(--max-width) !important;
+  min-height: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 0 !important;
+  margin-inline: auto !important;
+  padding: 0 !important;
+  flex: initial !important;
+}
+#challenge.challenge .challenge-copy {
+  position:relative !important;
+  width:100% !important;
+  max-width: 1050px !important;
+  margin:0 auto !important;
+  text-align:center !important;
+  flex: initial !important;
+}
+#challenge.challenge .challenge-copy h2 {
+  max-width: 100% !important;
+  margin:0 auto !important;
+  line-height:1.22 !important;
+  font-size: clamp(30px, 4.25vw, 63px) !important;
+}
+#challenge.challenge .challenge-cta {
+  display:flex !important;
+  justify-content:center !important;
+  margin: 24px auto 0 !important;
+  position:relative !important;
+  z-index:6 !important;
+}
+#challenge.challenge .challenge-cta .btn-arrow {margin-top:0 !important;}
+#challenge.challenge .challenge-art {
+  position:relative !important;
+  inset:auto !important;
+  width: min(100%, 740px) !important;
+  max-width: 740px !important;
+  height: 475px !important;
+  min-height:0 !important;
+  display:block !important;
+  flex: 0 0 auto !important;
+  align-self:center !important;
+  margin: clamp(76px, 8vw, 115px) auto 0 !important;
+  background:none !important;
+  opacity:1;
+  overflow:visible !important;
+  transform:none !important;
+  isolation:isolate !important;
+  -webkit-mask-image:none !important;
+  mask-image:none !important;
+}
+#challenge.challenge .challenge-circle {
+  position:absolute !important;
+  inset:auto !important;
+  left:50% !important;
+  bottom:-52px !important;
+  top:auto !important;
+  width: 465px !important;
+  height:465px !important;
+  aspect-ratio:1 !important;
+  border-radius:50% !important;
+  transform:translateX(-50%) !important;
+  background:#f56d5c !important;
+  z-index:1 !important;
+}
+#challenge.challenge .challenge-figure {
+  position:absolute !important;
+  inset:auto !important;
+  left:50% !important;
+  bottom:-52px !important;
+  top:auto !important;
+  width: 450px !important;
+  height:485px !important;
+  min-height:0 !important;
+  transform:translateX(-50%) !important;
+  background: url("images/challenge-man-clean.png") center bottom / contain no-repeat !important;
+  z-index:2 !important;
+  filter:none !important;
+}
+#challenge.challenge .challenge-note {
+  position:absolute !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  z-index:5 !important;
+  width:116px !important;
+  max-width:none !important;
+  min-height:72px !important;
+  padding:10px 8px !important;
+  font-size:15px !important;
+  line-height:1.4 !important;
+  right:auto !important;
+  bottom:auto !important;
+}
+#challenge.challenge .note-sales {left: 14% !important;top:12% !important;}
+#challenge.challenge .note-competitors {left: 67% !important;top:15% !important;}
+#challenge.challenge .note-reach {left: 3% !important;top:49% !important;}
+#challenge.challenge .note-campaigns {left: 79% !important;top:46% !important;}
+#challenge.challenge .note-plan {left: 72% !important;top:72% !important;}
+
+@media (min-width:861px) and (max-width:1200px) {
+ #challenge.challenge {padding-top:82px !important;}
+ #challenge.challenge .challenge-copy h2 {font-size:clamp(37px,4.2vw,52px) !important;}
+ #challenge.challenge .challenge-art {width:min(100%,650px) !important;height:440px !important;margin-top:100px !important;}
+ #challenge.challenge .challenge-circle {width:425px !important;height:425px !important;bottom:-50px !important;}
+ #challenge.challenge .challenge-figure {width:425px !important;height:450px !important;bottom:-50px !important;}
+ #challenge.challenge .challenge-note {width:108px !important;min-height:68px !important;font-size:14px !important;}
+}
+@media (max-width:860px) {
+ #challenge.challenge {padding-top:76px !important;}
+ #challenge.challenge > .container.challenge-stack {width:min(calc(100% - var(--container-padding-mobile) * 2),var(--max-width)) !important;}
+ #challenge.challenge .challenge-copy h2 {font-size:clamp(28px,4.6vw,40px) !important;}
+ #challenge.challenge .challenge-art {width:min(100%,570px) !important;height:405px !important;margin-top:82px !important;}
+ #challenge.challenge .challenge-circle {width:380px !important;height:380px !important;bottom:-40px !important;}
+ #challenge.challenge .challenge-figure {width:385px !important;height:405px !important;bottom:-40px !important;}
+ #challenge.challenge .challenge-note {width:92px !important;min-height:59px !important;font-size:12px !important;padding:6px !important;}
+ #challenge.challenge .note-sales {left:12% !important;top:14% !important;}
+ #challenge.challenge .note-competitors {left:67% !important;top:15% !important;}
+ #challenge.challenge .note-reach {left:1% !important;top:49% !important;}
+ #challenge.challenge .note-campaigns {left:81% !important;top:48% !important;}
+ #challenge.challenge .note-plan {left:72% !important;top:73% !important;}
+}
+@media (max-width:560px) {
+ #challenge.challenge {padding-top:64px !important;}
+ #challenge.challenge .challenge-copy h2 {font-size:clamp(27px,7.1vw,34px) !important;}
+ #challenge.challenge .challenge-cta {margin-top:20px !important;}
+ #challenge.challenge .challenge-art {width:100% !important;height:clamp(312px,88vw,370px) !important;margin-top:68px !important;}
+ #challenge.challenge .challenge-circle {width:min(83vw,310px) !important;height:auto !important;aspect-ratio:1 !important;bottom:-29px !important;}
+ #challenge.challenge .challenge-figure {width:min(83vw,315px) !important;height:100% !important;bottom:-32px !important;}
+ #challenge.challenge .challenge-note {width:clamp(64px,19vw,78px) !important;min-height:45px !important;font-size:10px !important;padding:5px !important;}
+ #challenge.challenge .note-sales {left:6% !important;top:13% !important;}
+ #challenge.challenge .note-competitors {left:68% !important;top:15% !important;}
+ #challenge.challenge .note-reach {left:0% !important;top:50% !important;}
+ #challenge.challenge .note-campaigns {left:79% !important;top:46% !important;}
+ #challenge.challenge .note-plan {left:70% !important;top:73% !important;}
+}
+
+
+/* Sixth Challenge sticky note — centered above the coral circle. */
+#challenge.challenge .challenge-note.note-budget {
+  left: 40% !important;
+  right: auto !important;
+  top: 0 !important;
+  bottom: auto !important;
+  width: 155px !important;
+  min-height: 92px !important;
+  font-size: 13px !important;
+  padding: 10px 9px !important;
+  transform: rotate(5deg);
+}
+@media (min-width: 861px) and (max-width: 1200px) {
+  #challenge.challenge .challenge-note.note-budget {
+    left: 39% !important;
+    width: 142px !important;
+    min-height: 85px !important;
+    font-size: 12px !important;
+  }
+}
+@media (max-width: 860px) {
+  #challenge.challenge .challenge-note.note-budget {
+    left: 37% !important;
+    top: 0 !important;
+    width: 126px !important;
+    min-height: 80px !important;
+    font-size: 11px !important;
+    padding: 7px !important;
+  }
+}
+@media (max-width: 560px) {
+  #challenge.challenge .challenge-note.note-budget {
+    left: 36% !important;
+    top: 0 !important;
+    width: 106px !important;
+    min-height: 71px !important;
+    font-size: 9.4px !important;
+    line-height: 1.38 !important;
+    padding: 6px !important;
   }
 }
