@@ -89,7 +89,7 @@
         <nav class="nav" aria-label="القائمة الرئيسية">
           <a href="#home" class="active">الرئيسية</a>
           <a href="#challenge">من نحن</a>
-          <a href="#services">خدماتنا</a>
+          <a href="#our-services">خدماتنا</a>
           <a href="#portfolio">أعمالنا</a>
           <a href="#contact">تواصل معنا</a>
         </nav>
@@ -188,92 +188,173 @@
         </div>
       </section>
 
-      <section class="solution section-block" id="solution">
-        <div class="container split-grid split-grid--reverse">
-          <div class="solution-art reveal"></div>
 
-          <div class="solution-copy reveal">
-            <div class="section-meta light"><span>الحل</span></div>
-            <h2>
-              أغلب الوكالات تبيع كلام…
-              <span class="accent">حنا نشتغل على أرقام.</span>
+      <!-- Root problem: original source copy, visual comparison like the supplied reference. -->
+      <section class="problem section-block" id="problem" aria-labelledby="problem-heading">
+        <div class="container problem-inner">
+          <div class="problem-intro centered reveal">
+            <h2 id="problem-heading">
+              <span class="problem-heading-accent">المشكلة غالبًا مو في المنتج…</span>
+              <span>المشكلة تكون في طريقة تقديمه وتسويقه.</span>
             </h2>
-            <p>
-              في KIO Rasans ما نقيس نجاحنا بعدد التصاميم ولا عدد المنشورات. نقيس
-              نجاحنا بزيادة المبيعات، وزيادة عدد العملاء، وتحسين تجربة العميل.
-            </p>
-            <a href="#services" class="btn-arrow">
-              <span>تعرّف علينا</span>
-              <span class="circle circle-outline coral-outline">←</span>
-            </a>
+          </div>
+          <div class="problem-compare" aria-label="مقارنة بصرية بين تقديم احترافي وتقديم ضعيف للمنتج">
+            <figure class="problem-card problem-card--good reveal">
+              <img src="images/problem-good.jpg" loading="lazy" alt="برجر بتقديم احترافي ومكونات واضحة" />
+            </figure>
+            <div class="problem-direction" aria-hidden="true">←</div>
+            <figure class="problem-card problem-card--weak reveal">
+              <img src="images/problem-weak.jpg" loading="lazy" alt="برجر بتقديم ضعيف مقارنة بالصورة الاحترافية" />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="solution section-block" id="solution" aria-labelledby="solution-heading">
+        <div class="container metrics-layout">
+          <div class="metrics-copy solution-copy reveal">
+            <div class="section-meta"><span>النتائج اللي تهمك</span></div>
+            <h2 id="solution-heading"><span>أغلب الوكالات تبيع كلام…</span><span class="accent">حنا نشتغل على أرقام</span></h2>
+            <p>في KIO Rasans ما نقيس نجاحنا بعدد التصاميم ولا عدد المنشورات.</p>
+            <p class="metrics-lead">نقيس نجاحنا بأشياء تهم صاحب المطعم فعلاً:</p>
+            <a href="#services" class="btn-arrow btn-arrow--dark"><span>كيف نشتغل؟</span><span class="circle circle-outline">←</span></a>
+          </div>
+          <div class="metrics-showcase">
+            <div class="metrics-grid">
+              <article class="metric-card reveal">
+                <span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/><path d="M4 21h16"/></svg></span>
+                <h3>زيادة المبيعات</h3>
+              </article>
+              <article class="metric-card reveal">
+                <span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+                <h3>زيادة عدد العملاء</h3>
+              </article>
+              <article class="metric-card reveal">
+                <span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.5 12.5a2 2 0 0 0 2 1.5h9.8a2 2 0 0 0 2-1.6L23 6H6"/></svg></span>
+                <h3>رفع متوسط قيمة الطلب</h3>
+              </article>
+              <article class="metric-card reveal">
+                <span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 8.4l6.1-.9z"/><path d="m18 20 2 2 3-3"/></svg></span>
+                <h3>تحسين تجربة العميل</h3>
+              </article>
+              <article class="metric-card reveal">
+                <span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 0 0-14.8-4L3 9"/><path d="M3 3v6h6"/><path d="M4 13a8 8 0 0 0 14.8 4l2.2-2"/><path d="M21 21v-6h-6"/></svg></span>
+                <h3>زيادة تكرار الشراء</h3>
+              </article>
+              <article class="metric-card reveal">
+                <span class="metric-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+                <h3>بناء علامة تجارية يثق فيها الناس</h3>
+              </article>
+            </div>
+            <p class="metrics-takeaway reveal">لأن بالنهاية… النتيجة أهم من أي شيء ثاني.</p>
           </div>
         </div>
       </section>
 
       <section class="services section-block" id="services">
-        <div class="container">
-          <div class="section-intro centered reveal">
+        <div class="container process-layout">
+          <div class="process-header centered">
             <div class="section-meta center"><span>كيف نشتغل؟</span></div>
-            <h2>نختبر. نتعلم.<span class="accent">نتأقلم.</span></h2>
-            <p class="center-text">
-              ما نؤمن بالحلول الجاهزة. كل علامة تجارية لها جمهور مختلف وسلوك
-              مختلف.
-            </p>
+            <h2 class="process-headline" aria-label="نختبر، نتعلم، نتأقلم">
+              <span>نختبر</span><i aria-hidden="true">←</i>
+              <span>نتعلم</span><i aria-hidden="true">←</i>
+              <span>نتأقلم</span>
+            </h2>
           </div>
 
-          <div class="services-grid">
-            <article class="service-card reveal">
-              <div class="service-image">
-                <img src="images/service-branding.webp" alt="الهوية البصرية" />
+          <div class="process-chart" role="img" aria-label="رسم توضيحي متحرك يظهر تحسن النتائج تدريجيًا، شهرًا بعد شهر">
+            <div class="process-chart__plot" aria-hidden="true">
+              <div class="process-chart__bars">
+                <div class="process-chart__bar" style="--growth-height: 22%;"><span class="process-chart__bar-icon">▂</span></div>
+                <div class="process-chart__bar" style="--growth-height: 35%;"><span class="process-chart__bar-icon">▃</span></div>
+                <div class="process-chart__bar" style="--growth-height: 49%;"><span class="process-chart__bar-icon">▄</span></div>
+                <div class="process-chart__bar" style="--growth-height: 66%;"><span class="process-chart__bar-icon">▆</span></div>
+                <div class="process-chart__bar" style="--growth-height: 84%;"><span class="process-chart__bar-icon">▇</span></div>
               </div>
-              <div class="service-content"><h3>دراسة السوق والمنافسين</h3></div>
-            </article>
-
-            <article class="service-card reveal">
-              <div class="service-image">
-                <img src="images/service-content.webp" alt="المحتوى والإنتاج" />
-              </div>
-              <div class="service-content"><h3>فهم سلوك العملاء</h3></div>
-            </article>
-
-            <article class="service-card reveal">
-              <div class="service-image">
-                <img
-                  src="images/service-digital.webp"
-                  alt="التسويق الرقمي والحملات"
-                />
-              </div>
-              <div class="service-content"><h3>اختبار أنواع المحتوى</h3></div>
-            </article>
-
-            <article class="service-card reveal">
-              <div class="service-image">
-                <img
-                  src="images/service-packaging.webp"
-                  alt="التغليف والمنيو"
-                />
-              </div>
-              <div class="service-content">
-                <h3>اختبار العروض والرسائل التسويقية</h3>
-              </div>
-            </article>
-
-            <article class="service-card reveal">
-              <div class="service-image">
-                <img
-                  src="images/service-consulting.webp"
-                  alt="الاستشارات والمبيعات"
-                />
-              </div>
-              <div class="service-content">
-                <h3>قياس النتائج بشكل مستمر</h3>
-              </div>
-            </article>
+              <svg class="process-chart__line" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true">
+                <path class="process-chart__glow" d="M100 312 L300 260 L500 204 L700 136 L900 56"/>
+                <path class="process-chart__path" d="M100 312 L300 260 L500 204 L700 136 L900 56"/>
+                <g class="process-chart__points">
+                  <circle cx="100" cy="312" r="6"/>
+                  <circle cx="300" cy="260" r="6"/>
+                  <circle cx="500" cy="204" r="6"/>
+                  <circle cx="700" cy="136" r="6"/>
+                  <circle cx="900" cy="56" r="6"/>
+                </g>
+                <path class="process-chart__arrow" d="M874 53 L900 56 L890 80"/>
+              </svg>
+            </div>
           </div>
+          <p class="process-caption centered">وهكذا تبدأ النتائج بالتحسن <strong>شهر بعد شهر.</strong></p>
+        </div>
+      </section>
 
-          <div class="centered cta-row reveal">
-            <a href="#contact" class="btn-pill">
-              اكتشف خدماتنا <span class="dot">←</span>
+      <!-- Why KIO Rasans: full-bleed chapter between process and portfolio -->
+      <section class="why-kio section-block" id="why-kio" aria-labelledby="whyKioTitle">
+        <div class="container why-kio__inner">
+          <div class="why-kio__content">
+            <div class="section-meta light"><span>ليش KIO Rasans؟</span></div>
+            <h2 id="whyKioTitle">لأننا نتخصص في <span>قطاع الأغذية والمشروبات</span></h2>
+            <p>مو مجرد عميل ضمن عشرات القطاعات.</p>
+            <p>هذا المجال اللي نركز عليه ونطوره بشكل مستمر.</p>
+            <a class="why-kio__button" href="why-kio-rasans.html" aria-label="اعرف أكثر عن ليش KIO Rasans">
+              <span>اكتشف ليش KIO Rasans</span>
+              <span class="why-kio__button-icon" aria-hidden="true">←</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services overview: titles only, dedicated slider after Why KIO -->
+      <section class="service-showcase section-block" id="our-services" aria-labelledby="ourServicesTitle">
+        <div class="container service-showcase__inner">
+          <div class="service-showcase__heading">
+            <div>
+              <div class="section-meta light"><span>خدماتنا</span></div>
+              <h2 id="ourServicesTitle">خدماتنا</h2>
+            </div>
+            <div class="service-showcase__nav" aria-label="التنقل بين الخدمات">
+              <button class="service-showcase__prev" type="button" aria-label="الخدمة السابقة">←</button>
+              <button class="service-showcase__next" type="button" aria-label="الخدمة التالية">→</button>
+            </div>
+          </div>
+          <div class="service-showcase__track" id="serviceShowcaseTrack" tabindex="0" aria-label="قائمة خدمات KIO RASAN’S">
+              <article class="service-showcase__card" aria-label="بناء الهوية التجارية">
+                <div class="service-showcase__photo"><img src="images/service-branding.webp" alt="" loading="lazy" decoding="async"></div>
+                <h3>بناء الهوية التجارية</h3>
+              </article>
+              <article class="service-showcase__card" aria-label="تصميم وإنتاج التغليف">
+                <div class="service-showcase__photo"><img src="images/service-packaging.webp" alt="" loading="lazy" decoding="async"></div>
+                <h3>تصميم وإنتاج التغليف</h3>
+              </article>
+              <article class="service-showcase__card" aria-label="الاستشارات التسويقية وخطط النمو">
+                <div class="service-showcase__photo"><img src="images/service-consulting.webp" alt="" loading="lazy" decoding="async"></div>
+                <h3>الاستشارات التسويقية وخطط النمو</h3>
+              </article>
+              <article class="service-showcase__card" aria-label="إدارة منصات التواصل الاجتماعي">
+                <div class="service-showcase__photo"><img src="images/service-digital.webp" alt="" loading="lazy" decoding="async"></div>
+                <h3>إدارة منصات التواصل الاجتماعي</h3>
+              </article>
+              <article class="service-showcase__card" aria-label="التصوير وصناعة المحتوى">
+                <div class="service-showcase__photo"><img src="images/service-content.webp" alt="" loading="lazy" decoding="async"></div>
+                <h3>التصوير وصناعة المحتوى</h3>
+              </article>
+              <article class="service-showcase__card" aria-label="الحملات الإبداعية والمؤثرين">
+                <div class="service-showcase__photo"><img src="images/work-stmp.webp" alt="" loading="lazy" decoding="async"></div>
+                <h3>الحملات الإبداعية والمؤثرين</h3>
+              </article>
+              <article class="service-showcase__card" aria-label="تطوير المواقع والتجارب الرقمية">
+                <div class="service-showcase__photo"><img src="images/hero-products.webp" alt="" loading="lazy" decoding="async"></div>
+                <h3>تطوير المواقع والتجارب الرقمية</h3>
+              </article>
+              <article class="service-showcase__card" aria-label="الفعاليات والتفعيلات داخل الفروع">
+                <div class="service-showcase__photo"><img src="images/work-deera.webp" alt="" loading="lazy" decoding="async"></div>
+                <h3>الفعاليات والتفعيلات داخل الفروع</h3>
+              </article>
+          </div>
+          <div class="service-showcase__bottom">
+            <a class="service-showcase__cta" href="services.html">
+              <span>اكتشف جميع خدماتنا</span><span aria-hidden="true">←</span>
             </a>
           </div>
         </div>
@@ -360,7 +441,7 @@
           <ul>
             <li><a href="#home">الرئيسية</a></li>
             <li><a href="#challenge">من نحن</a></li>
-            <li><a href="#services">خدماتنا</a></li>
+            <li><a href="#our-services">خدماتنا</a></li>
             <li><a href="#portfolio">أعمالنا</a></li>
             <li><a href="#contact">تواصل معنا</a></li>
           </ul>

@@ -99,6 +99,123 @@
   const $ = (selector, scope = document) => scope.querySelector(selector);
   const $$ = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
 
+  // Infinite services carousel: one-card autoplay, seamless three-set loop.
+  // Keep native touch swiping, keyboard navigation and the existing buttons.
+  const serviceTrack = document.getElementById('serviceShowcaseTrack');
+  if (serviceTrack) {
+    const originalCards = Array.from(serviceTrack.querySelectorAll('.service-showcase__card'));
+    const previous = document.querySelector('.service-showcase__prev');
+    const next = document.querySelector('.service-showcase__next');
+    const count = originalCards.length;
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+    let autoTimer;
+    let settleTimer;
+    let currentIndex = count;
+    let resetting = false;
+    let hovering = false;
+    let focused = false;
+
+    if (count > 1) {
+      // Duplicate a full set on both sides of the original cards. The middle
+      // set serves as the invisible wrap point, so no slides visibly jump.
+      const createClone = card => {
+        const clone = card.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        clone.querySelectorAll('img').forEach(img => { img.loading = 'eager'; });
+        return clone;
+      };
+      const before = document.createDocumentFragment();
+      const after = document.createDocumentFragment();
+      originalCards.forEach(card => before.appendChild(createClone(card)));
+      originalCards.forEach(card => after.appendChild(createClone(card)));
+      serviceTrack.prepend(before);
+      serviceTrack.append(after);
+      const slides = Array.from(serviceTrack.querySelectorAll('.service-showcase__card'));
+      const targetLeft = index => slides[index].offsetLeft - slides[0].offsetLeft;
+      const nearestIndex = () => slides.reduce((best, card, index) =>
+        Math.abs(targetLeft(index) - serviceTrack.scrollLeft) <
+        Math.abs(targetLeft(best) - serviceTrack.scrollLeft) ? index : best, 0);
+
+      const jumpTo = index => {
+        resetting = true;
+        const oldBehavior = serviceTrack.style.scrollBehavior;
+        const oldSnap = serviceTrack.style.scrollSnapType;
+        serviceTrack.style.scrollBehavior = 'auto';
+        serviceTrack.style.scrollSnapType = 'none';
+        serviceTrack.scrollLeft = targetLeft(index);
+        currentIndex = index;
+        // Restore snapping on a later frame, after the reposition has painted.
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          serviceTrack.style.scrollBehavior = oldBehavior;
+          serviceTrack.style.scrollSnapType = oldSnap;
+          resetting = false;
+        }));
+      };
+      const recenter = () => {
+        if (resetting) return;
+        currentIndex = nearestIndex();
+        if (currentIndex >= count * 2) jumpTo(currentIndex - count);
+        else if (currentIndex < count) jumpTo(currentIndex + count);
+      };
+      const step = direction => {
+        if (resetting) return;
+        currentIndex = nearestIndex();
+        // When the user scrolls into an outer copy, normalize before advancing.
+        if (currentIndex >= count * 2 || currentIndex < count) {
+          const normalized = ((currentIndex % count) + count) % count + count;
+          jumpTo(normalized);
+          currentIndex = normalized;
+        }
+        const nextIndex = Math.max(0, Math.min(slides.length - 1, currentIndex + direction));
+        currentIndex = nextIndex;
+        serviceTrack.scrollTo({
+          left: targetLeft(nextIndex),
+          behavior: reducedMotion.matches ? 'instant' : 'smooth'
+        });
+      };
+      const stopAuto = () => clearInterval(autoTimer);
+      const startAuto = () => {
+        stopAuto();
+        if (reducedMotion.matches) return;
+        autoTimer = setInterval(() => {
+          if (!document.hidden && !hovering && !focused) step(1);
+        }, 3400);
+      };
+
+      previous?.addEventListener('click', () => { step(-1); startAuto(); });
+      next?.addEventListener('click', () => { step(1); startAuto(); });
+      serviceTrack.addEventListener('keydown', event => {
+        if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+          event.preventDefault();
+          step(event.key === 'ArrowRight' ? 1 : -1);
+          startAuto();
+        }
+      });
+      serviceTrack.addEventListener('scroll', () => {
+        if (resetting) return;
+        clearTimeout(settleTimer);
+        settleTimer = setTimeout(recenter, 180);
+      }, {passive:true});
+      const area = document.querySelector('.service-showcase__inner');
+      area?.addEventListener('mouseenter', () => { hovering = true; });
+      area?.addEventListener('mouseleave', () => { hovering = false; });
+      area?.addEventListener('focusin', () => { focused = true; });
+      area?.addEventListener('focusout', event => {
+        if (!area.contains(event.relatedTarget)) focused = false;
+      });
+      serviceTrack.addEventListener('pointerdown', () => { stopAuto(); }, {passive:true});
+      serviceTrack.addEventListener('pointerup', startAuto, {passive:true});
+      window.addEventListener('resize', () => jumpTo(currentIndex), {passive:true});
+      reducedMotion.addEventListener?.('change', startAuto);
+      // Initial position is the first REAL card, visually identical to before.
+      jumpTo(count);
+      startAuto();
+      window.addEventListener('pagehide', () => {
+        stopAuto(); clearTimeout(settleTimer);
+      }, {once:true});
+    }
+  }
+
   const track = $('#clientsTrack');
   if (track) {
     const first = $('.clients-logos', track);
@@ -249,15 +366,40 @@
         stagger:{ each:.11, from:'random' },
         ease:'power2.out'
       }, '+=.06'));
+    addChapter('.problem', tl => tl
+      .from('.problem-intro h2 > span', {autoAlpha:0, y:30, duration:.64, stagger:.16})
+      .from('.problem-card', {autoAlpha:0, y:35, scale:.965, duration:.7, stagger:.13}, '-=.32')
+      .from('.problem-direction', {autoAlpha:0, scale:.5, duration:.4}, '-=.34'));
     addChapter('.solution', tl => tl
-      .from('.solution-copy .section-meta', { autoAlpha:0, y:16, duration:.4 })
-      .from('.solution-copy h2', { autoAlpha:0, y:40, duration:.78 }, '-=.18')
-      .from('.solution-copy p', { autoAlpha:0, y:22, duration:.62 }, '-=.37')
-      .from('.solution-copy .btn-arrow', { autoAlpha:0, y:17, duration:.55 }, '-=.31'));
-    addChapter('.services', tl => tl
-      .from('.services .section-intro > *', { autoAlpha:0, y:28, duration:.56, stagger:.1 })
-      .from('.services .service-card', { autoAlpha:0, y:53, duration:.66, stagger:.105 }, '-=.18')
-      .from('.services .cta-row', { autoAlpha:0, y:16, duration:.48 }, '-=.2'));
+      .from('.metrics-copy .section-meta', {autoAlpha:0, y:14, duration:.4})
+      .from('.metrics-copy h2 span', {autoAlpha:0, y:26, duration:.62, stagger:.14}, '-=.18')
+      .from('.metrics-copy p, .metrics-copy .btn-arrow', {autoAlpha:0, y:16, duration:.46, stagger:.12}, '-=.3')
+      .from('.metric-card', {autoAlpha:0, y:35, scale:.96, duration:.53, stagger:{each:.085,from:'start'}}, '-=.55')
+      .from('.metrics-takeaway', {autoAlpha:0, y:15, duration:.5}, '-=.25'));
+    addChapter('.services', tl => {
+      const chartPath = document.querySelector('.process-chart__path');
+      const glowPath = document.querySelector('.process-chart__glow');
+      const lineLength = chartPath?.getTotalLength() || 1;
+      [chartPath, glowPath].forEach(path => {
+        if (path) gsap.set(path, { strokeDasharray: lineLength, strokeDashoffset: lineLength });
+      });
+      tl.from('.process-header .section-meta', { autoAlpha:0, y:16, duration:.4 })
+        .from('.process-headline > *', { autoAlpha:0, y:22, duration:.46, stagger:.11 }, '-=.15')
+        .from('.process-chart__bar', { scaleY:0, duration:.75, stagger:.18, ease:'power2.out' }, '-=.14')
+        .to([chartPath, glowPath].filter(Boolean), { strokeDashoffset:0, duration:1.3, ease:'power2.inOut' }, '-=.65')
+        .from('.process-chart__points circle', { autoAlpha:0, scale:0, transformOrigin:'center center', duration:.32, stagger:.15 }, '-=.7')
+        .from('.process-chart__arrow', { autoAlpha:0, duration:.25 }, '-=.2')
+        .from('.process-caption', { autoAlpha:0, y:18, duration:.54 }, '-=.25');
+    });
+    addChapter('.why-kio', tl => tl
+      .from('.why-kio__content .section-meta', {autoAlpha:0, y:18, duration:.4})
+      .from('.why-kio__content h2', {autoAlpha:0, y:37, duration:.75}, '-=.15')
+      .from('.why-kio__content p', {autoAlpha:0, y:19, duration:.57, stagger:.13}, '-=.29')
+      .from('.why-kio__button', {autoAlpha:0, y:16, duration:.53}, '-=.23'));
+    addChapter('.service-showcase', tl => tl
+      .from('.service-showcase__heading > *', {autoAlpha:0, y:27, duration:.56, stagger:.13})
+      .from('.service-showcase__card', {autoAlpha:0, y:54, duration:.67, stagger:.09}, '-=.24')
+      .from('.service-showcase__bottom', {autoAlpha:0, y:18, duration:.5}, '-=.3'));
     addChapter('.work', tl => tl
       .from('.work-intro > *', { autoAlpha:0, y:28, duration:.58, stagger:.105 })
       .from('.work-card', { autoAlpha:0, y:62, scale:.96, duration:.68, stagger:.13 }, '-=.32'));
@@ -275,91 +417,33 @@
     };
   });
 
-  // Stacking panels: as the page scrolls, the NEXT panel rises and covers
-  // the current pinned panel. pinSpacing:false prevents spacer gaps.
+  // Natural scrolling: no stacked panels or pinned ScrollTriggers.
+  // Keep existing chapter timelines, but start them on entering the viewport.
   mm.add('(min-width: 861px) and (prefers-reduced-motion: no-preference)', () => {
-    const chapters = ['.challenge', '.solution', '.services', '.work', '.closing']
-      .map(selector => $(selector))
-      .filter(Boolean);
-    const pins = [];
-    const earlyReveals = [];
-    // Start the inside animations BEFORE the panel reaches the top.
-    // The panel has already entered the lower part of the viewport at this point.
-    chapters.forEach((section, index) => {
-      const selector = ['.challenge', '.solution', '.services', '.work', '.closing'][index];
-      earlyReveals.push(ScrollTrigger.create({
+    const selectors = ['.challenge', '.problem', '.solution', '.services', '.why-kio', '.service-showcase', '.work', '.closing'];
+    const reveals = selectors.map(selector => {
+      const section = $(selector);
+      if (!section) return null;
+      return ScrollTrigger.create({
         trigger: section,
-        start: 'top 50%',
+        start: 'top 82%',
         onEnter: () => chapterTimelines[selector]?.play(),
         onEnterBack: () => chapterTimelines[selector]?.progress(1),
+        onLeave: () => chapterTimelines[selector]?.progress(1),
         invalidateOnRefresh: true
-      }));
-    });
-
-    chapters.forEach((section, index) => {
-      // Section stacking order is intentional: the next chapter is on top.
-      gsap.set(section, { zIndex: 10 + index });
-
-      const next = chapters[index + 1];
-      let revealCall;
-      const pinConfig = {
-        id: `stack-chapter-${index + 1}`,
-        onEnter: () => {
-          if (revealCall) revealCall.kill();
-          const tl = chapterTimelines[['.challenge', '.solution', '.services', '.work', '.closing'][index]];
-          if (tl && tl.progress() < 1) {
-            // Fallback for jumps/direct navigation; normal reveal starts earlier.
-            tl.play();
-          }
-        },
-        onLeave: () => {
-          if (revealCall) revealCall.kill();
-          const tl = chapterTimelines[['.challenge', '.solution', '.services', '.work', '.closing'][index]];
-          if (tl) tl.progress(1);
-        },
-        onEnterBack: () => {
-          if (revealCall) revealCall.kill();
-          const tl = chapterTimelines[['.challenge', '.solution', '.services', '.work', '.closing'][index]];
-          if (tl) tl.progress(1);
-        },
-        trigger: section,
-        start: 'top top',
-        pin: true,
-        pinSpacing: false,
-        pinReparent: false,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        refreshPriority: chapters.length - index,
-      };
-
-      if (next) {
-        // Keep the current scene fixed until the next has slid fully over it.
-        pinConfig.endTrigger = next;
-        pinConfig.end = 'top top';
-      } else {
-        // Short final hold, then the closing scrolls away to reveal the footer.
-        pinConfig.end = () => `+=${Math.round(window.innerHeight * .65)}`;
-        pinConfig.pinSpacing = true;
-      }
-
-      pins.push(ScrollTrigger.create(pinConfig));
-    });
-
-    return () => {
-      pins.forEach(pin => pin.kill());
-      earlyReveals.forEach(trigger => trigger.kill());
-      chapters.forEach(section => gsap.set(section, { clearProps: 'zIndex' }));
-    };
+      });
+    }).filter(Boolean);
+    return () => reveals.forEach(trigger => trigger.kill());
   });
-
-  // Footer stays in document flow, below main and below its stacking layer.
-  // This prevents it being visible during pin-spacer gaps.
 
   mm.add('(max-width: 860px)', () => {
     // Touch devices: short reveal sequences, no pinned sections, no horizontal animation.
     const groups = [
-            ['.solution', '.solution-copy'],
-      ['.services', '.section-intro, .service-card'],
+      ['.problem', '.problem-intro, .problem-card, .problem-direction'],
+            ['.solution', '.metrics-copy, .metric-card, .metrics-takeaway'],
+      ['.services', '.process-header, .process-chart, .process-caption'],
+      ['.why-kio', '.why-kio__content > *'],
+      ['.service-showcase', '.service-showcase__heading, .service-showcase__card, .service-showcase__bottom'],
       ['.work', '.work-intro, .work-card'],
       ['.closing', '.closing-center'],
       ['.footer', '.footer-col']
@@ -378,6 +462,17 @@
         stagger:{each:.1, from:'random'}, ease:'power2.out'
       }, '+=.06')
       .from('.challenge-cta', {autoAlpha:0, y:12, duration:.4}, '-=.08');
+    const mobileChartPath = document.querySelector('.process-chart__path');
+    const mobileGlowPath = document.querySelector('.process-chart__glow');
+    if (mobileChartPath) {
+      const length = mobileChartPath.getTotalLength();
+      [mobileChartPath, mobileGlowPath].forEach(path => {
+        if (path) gsap.set(path, { strokeDasharray:length, strokeDashoffset:length });
+      });
+      gsap.timeline({scrollTrigger:{trigger:'#services',start:'top 80%',once:true}})
+        .from('.process-chart__bar',{scaleY:0,transformOrigin:'bottom center',duration:.65,stagger:.12})
+        .to([mobileChartPath,mobileGlowPath].filter(Boolean),{strokeDashoffset:0,duration:1.05},'-=.46');
+    }
     groups.forEach(([chapter, elements]) => {
       gsap.from($$(elements, $(chapter)), {
         autoAlpha: 0, y: 20, stagger: .08, duration: .65,
